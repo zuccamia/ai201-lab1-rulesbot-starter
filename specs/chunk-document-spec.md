@@ -116,11 +116,11 @@ handle these cases better, at the cost of more implementation complexity.
 **Actual chunk count produced across all 8 rule books:**
 
 ```
-[your answer here]
+149 chunks
 ```
 
 **One thing that surprised you or didn't match your expectations:**
 
 ```
-[your answer here]
+I would have expected the content across 8 rule books to produce more fixed-sized chunks, even with overlapping. But then when I estimated the total characters with ~150 chunks of 300 characters, which is about 45000 characters, it would be equivalent to roughly 8000 words, which is actually not that uncommon for 8 game rule books.
 ```
