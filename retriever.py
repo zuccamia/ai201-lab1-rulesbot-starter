@@ -68,5 +68,22 @@ def retrieve(query, n_results=N_RESULTS):
     if _collection.count() == 0:
         return []
 
-    # Your implementation here.
-    return []
+    raw_chunks = _collection.query(
+        query_texts=[query],
+        n_results=n_results,
+        include=["documents", "metadatas", "distances"],
+    )
+
+    documents = raw_chunks["documents"][0]
+    metadatas = raw_chunks["metadatas"][0]
+    distances = raw_chunks["distances"][0]
+
+    chunks = [
+        {"text": d, "game": m.get("game"), "distance": dist}
+        for d, m, dist in zip(documents, metadatas, distances)
+    ]
+
+    for chunk in chunks:
+        print(f"[{chunk['game']}] (dist: {chunk['distance']:.4f}) {chunk['text']}...")
+
+    return chunks
